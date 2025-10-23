@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WiFi Info UI</string>
+
+    <!-- 버튼 -->
+    <string name="btn_connect_service">서비스 연결</string>
+    <string name="btn_disconnect_service">서비스 연결 해제</string>
+    <string name="btn_get_wifi_info">WiFi 정보 조회</string>
+
+    <!-- 상태 -->
+    <string name="connection_status">연결 상태:</string>
+    <string name="status_connected">연결됨</string>
+    <string name="status_disconnected">연결 안됨</string>
+
+    <!-- WiFi 정보 -->
+    <string name="wifi_info_title">WiFi 정보</string>
+    <string name="no_data">데이터 없음</string>
+
+    <!-- 로그 -->
+    <string name="log_title">로그</string>
+
+    <!-- 메시지 -->
+    <string name="error_service_not_connected">서비스가 연결되지 않았습니다</string>
+    <string name="error_bind_failed">서비스 바인딩 실패</string>
+    <string name="error_headless_app_not_installed">Headless App이 설치되지 않았습니다</string>
+    <string name="msg_service_connected">서비스 연결 성공</string>
+    <string name="msg_service_disconnected">서비스 연결 해제됨</string>
 </resources>
