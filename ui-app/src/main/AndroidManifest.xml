@@ -11,7 +11,7 @@
         android:icon="@android:drawable/ic_menu_info_details"
         android:label="WiFi Info UI"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/Theme.WifiInfoUI">
 
         <activity
             android:name=".MainActivity"
