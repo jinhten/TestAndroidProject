@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- 위치 권한 (Android 8.0 이상에서 WiFi SSID를 가져오기 위해 필요) -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

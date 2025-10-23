@@ -14,8 +14,6 @@ import android.util.Log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import java.net.Inet4Address
-import java.net.NetworkInterface
 
 /**
  * WiFi 상태를 모니터링하고 저장하는 클래스
@@ -214,22 +212,23 @@ class WifiStateMonitor(private val context: Context) {
 
     /**
      * IP 주소 가져오기
+     * WifiManager API를 사용하여 socket 권한 문제 방지
      */
     private fun getIpAddress(): String? {
         try {
-            val interfaces = NetworkInterface.getNetworkInterfaces()
-            while (interfaces.hasMoreElements()) {
-                val networkInterface = interfaces.nextElement()
-                if (networkInterface.name.startsWith("wlan")) {
-                    val addresses = networkInterface.inetAddresses
-                    while (addresses.hasMoreElements()) {
-                        val address = addresses.nextElement()
-                        if (address is Inet4Address && !address.isLoopbackAddress) {
-                            return address.hostAddress
-                        }
-                    }
-                }
-            }
+            val connectionInfo = wifiManager.connectionInfo
+            val ipInt = connectionInfo?.ipAddress ?: return null
+
+            if (ipInt == 0) return null
+
+            // int 값을 IP 주소 문자열로 변환 (little-endian)
+            return String.format(
+                "%d.%d.%d.%d",
+                ipInt and 0xff,
+                ipInt shr 8 and 0xff,
+                ipInt shr 16 and 0xff,
+                ipInt shr 24 and 0xff
+            )
         } catch (e: Exception) {
             Log.e(TAG, "Error getting IP address", e)
         }
