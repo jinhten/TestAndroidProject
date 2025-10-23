@@ -17,11 +17,25 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
 
+    <!-- Notification 권한 (Android 13 이상) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:icon="@android:drawable/ic_menu_info_details"
         android:label="Headless WiFi Service"
         android:supportsRtl="true">
+
+        <!-- 런처 Activity (서비스 시작용) -->
+        <activity
+            android:name=".LauncherActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!-- WiFi 상태 서비스 -->
         <service
